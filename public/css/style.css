@@ -1,0 +1,54 @@
+:root {
+  --brown: #4d260a;
+  --green: #409440;
+}
+body {
+  font-family: monospace;
+}
+nav {
+  background-color: var(--brown);
+  padding-left: 60px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+nav div:first-child {
+  display: flex;
+  flex-direction: row;
+  gap: 35px;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+nav a {
+  color: var(--green);
+  text-decoration: none;
+}
+nav div:nth-child(2) {
+  padding: 15px;
+}
+nav h1 {
+  padding: 5px;
+  font-size: 30px;
+  border-radius: 8px;
+  display: inline;
+  color: var(--brown);
+  background-color: var(--green);
+  box-shadow: 5px 5px 20px var(--green);
+}
+
+main {
+  background-color: var(--green);
+}
+.checkbox a {
+  text-decoration: none;
+  color: var(--brown);
+  font-size: 20px;
+}
+.checkbox a:hover {
+  text-decoration: underline;
+}
+footer {
+  padding-top: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
