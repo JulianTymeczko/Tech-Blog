@@ -21,19 +21,10 @@ router.get("/Sign-Up", async (req, res) => {
 router.get("/", async (req, res) => {
   const Data = [
     {
-      Title: "adwjunadwn",
-      Date: "dwadaw",
-      Paragraph: "dawdwad",
       User: "dwadwawad",
     },
   ];
-  res.render("index", { Data });
+  res.render("home", { Data });
 });
-
-// router.get("/movies", async (req, res) => {
-//   const result = await Movie.findAll();
-//   const movies = result.map((x) => x.get({ plain: true }));
-//   res.render("movies", { movies });
-// });
 
 module.exports = router;
