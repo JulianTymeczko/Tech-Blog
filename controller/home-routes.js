@@ -1,6 +1,22 @@
 const router = require("express").Router();
 router.get("/", async (req, res) => {
-  res.render("home");
+  const data = [
+    {
+      user: "dwadwawad",
+      title: "dwadadwdawdawd",
+      paragraph:
+        "dwadwadwadawdkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+      date: "dawdwadaw",
+    },
+    {
+      user: "1dwadwawad",
+      title: "1dwadadwdawdawd",
+      paragraph: "1dwadwadwadawd",
+      date: "1dawdwadaw",
+    },
+  ];
+
+  res.render("home", { data });
 });
 
 router.get("/dashboard", async (req, res) => {
@@ -16,15 +32,6 @@ router.get("/Log-Out", async (req, res) => {
 });
 router.get("/Sign-Up", async (req, res) => {
   res.render("SignUp");
-});
-
-router.get("/", async (req, res) => {
-  const Data = [
-    {
-      User: "dwadwawad",
-    },
-  ];
-  res.render("home", { Data });
 });
 
 module.exports = router;

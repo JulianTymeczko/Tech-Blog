@@ -11,24 +11,22 @@
     <div><h1>The Tech Blog</h1></div>
   </nav>
   <main>
-    {{!-- {{#each Data}}
+    {{#each data}}
       <div class="card">
 
         <div class="card-header">
           Posted by
-          {{this.User}}
+          {{this.user}}
           on
-          {{this.Date}}
+          {{this.date}}
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{this.Title}}</h5>
-          <p class="card-text">{{this.Paragraph}}</p>
+          <h5 class="card-title">Title: {{this.title}}</h5>
+          <p class="card-text">{{this.paragraph}}</p>
         </div>
 
       </div>
-    {{/each}} --}}
-    {{#each data}}
-      <h1>{{this.User}}</h1>
     {{/each}}
+
   </main>
 </body>
