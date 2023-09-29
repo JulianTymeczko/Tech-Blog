@@ -13,11 +13,8 @@ router.post("/login", async (req, res) => {
     return res.status(401).json({ message: "Incorrect username or password." });
   }
 
-  req.session.save(() => {
-    req.session.loggedIn = true;
-
-    res.status(200).json({ user: userData, message: "Login successful" });
-  });
+  req.session.user = userData.username;
+  res.redirect("/");
 });
 
 // Signup
@@ -26,21 +23,24 @@ router.post("/signup", async (req, res) => {
     username: req.body.username,
     password: req.body.password,
   };
-  const newUser = await User.create(newUserData);
+  const newUser = await User.create(newUserData).catch((err) => {
+    console.log(err);
+  });
   if (!newUser) {
     return res.status(500).json({ message: "Failed to create new user" });
   }
-  res.status(200).json();
+  req.session.user = newUser.username;
+  res.redirect("/");
 });
 
 // Logout
-router.post("/logout", (req, res) => {
-  if (req.session.loggedIn) {
+router.post("/Log-out", (req, res) => {
+  if (req.session.user) {
     req.session.destroy(() => {
       res.status(204).end();
     });
   } else {
-    res.status(404).end();
+    res.status(404).json({ message: "User is not currently logged in." });
   }
 });
 

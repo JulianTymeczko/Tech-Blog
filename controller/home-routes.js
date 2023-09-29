@@ -10,22 +10,26 @@ router.get("/", async (req, res) => {
       title: blog.title,
     };
   });
-  res.render("home", { data });
+  res.render("home", { data, loggedIn: req.session.user });
 });
 
 router.get("/dashboard", async (req, res) => {
-  res.render("dashboard");
+  if (!req.session.user) {
+    return res.redirect("/login");
+  }
+
+  res.render("dashboard", { loggedIn: req.session.user });
 });
 
 router.get("/login", async (req, res) => {
-  res.render("Login");
+  res.render("Login", { loggedIn: req.session.user });
 });
 
 router.get("/Log-Out", async (req, res) => {
-  res.render("Log-Out");
+  res.render("Log-Out", { loggedIn: req.session.user });
 });
 router.get("/Sign-Up", async (req, res) => {
-  res.render("SignUp");
+  res.render("SignUp", { loggedIn: req.session.user });
 });
 
 module.exports = router;

@@ -1,13 +1,50 @@
-document.addEventListener("click", (event) => {
-  if (event.target.id === "log-in" || event.target.id === "sign-up") {
-    data.loggedIn = !data.loggedIn;
+document.getElementById("log-in")?.addEventListener("click", (event) => {
+  event.preventDefault();
 
-    fetch("/updateLoggedIn", {
-      method: "POST",
-      body: JSON.stringify({ loggedIn: data.loggedIn }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  }
+  fetch("/api/users/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: document.getElementById("floatingInput").value,
+      password: document.getElementById("floatingPassword").value,
+    }),
+  }).then((res) => {
+    console.log(res);
+  });
 });
+
+document.getElementById("sign-up")?.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  fetch("/api/users/signup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: document.getElementById("floatingInputSign").value,
+      password: document.getElementById("floatingPasswordSign").value,
+    }),
+  }).then((res) => {
+    console.log(res);
+  });
+});
+
+// document.getElementById("log-out")?.addEventListener("click", (event) => {
+//   event.preventDefault();
+
+//   fetch("/api/users/Log-out", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       username: document.getElementById("floatingInputSign").value,
+//       password: document.getElementById("floatingPasswordSign").value,
+//     }),
+//   }).then((res) => {
+//     console.log(res);
+//   });
+// });
