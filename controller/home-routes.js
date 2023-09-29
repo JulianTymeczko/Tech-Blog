@@ -1,21 +1,15 @@
 const router = require("express").Router();
-router.get("/", async (req, res) => {
-  const data = [
-    {
-      user: "dwadwawad",
-      title: "dwadadwdawdawd",
-      paragraph:
-        "dwadwadwadawdkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
-      date: "dawdwadaw",
-    },
-    {
-      user: "1dwadwawad",
-      title: "1dwadadwdawdawd",
-      paragraph: "1dwadwadwadawd",
-      date: "1dawdwadaw",
-    },
-  ];
+const { Blog, User } = require("../models");
 
+router.get("/", async (req, res) => {
+  const data = (await Blog.findAll({ include: User })).map((blog) => {
+    return {
+      paragraph: blog.paragraph,
+      user: blog.user.username,
+      date: blog.date,
+      title: blog.title,
+    };
+  });
   res.render("home", { data });
 });
 
