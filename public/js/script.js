@@ -39,7 +39,7 @@ document.getElementById("modal-button")?.addEventListener("click", () => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      title: document.getElementById("modal-input").value,
+      title: document.getElementById("real-modal-input").value,
       paragraph: document.getElementById("exampleFormControlTextarea1").value,
     }),
   }).then((res) => {

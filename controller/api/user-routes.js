@@ -10,7 +10,7 @@ router.post("/login", async (req, res) => {
   }
   const passwordIsValid = userData.checkPassword(req.body.password);
   if (!passwordIsValid) {
-    return res.status(401).json({ message: "Incorrect username or password." });
+    return res.status(401).json({ message: "Incorrect password." });
   }
 
   req.session.user = userData.username;
@@ -34,7 +34,7 @@ router.post("/signup", async (req, res) => {
 });
 
 // Logout
-router.post("/Log-out", (req, res) => {
+router.post("/logout", (req, res) => {
   if (req.session.user) {
     req.session.destroy(() => {
       res.status(204).end();
