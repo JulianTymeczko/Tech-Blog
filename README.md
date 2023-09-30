@@ -137,4 +137,4 @@ blog posts. Additionally, it incorporates authentication, providing clear notifi
 
 ## Link to Deployed Application
 
-https://tech-blog-jht-a1392128d8eb.herokuapp.com/
+https://tech-blog-jht-129dc11c3aa1.herokuapp.com/
